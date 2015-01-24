@@ -1,0 +1,1 @@
+web: gunicorn myconotes.wsgi --log-file -
