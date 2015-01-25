@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import dj_database_url
+#import dj_database_url      #uncomment for Heroku
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 ADMINS = (
@@ -84,7 +84,7 @@ DATABASES = {
         'PASSWORD':'gameover',
     }
 }
-DATABASES['default'] = dj_database_url.config()
+#DATABASES['default'] = dj_database_url.config()     #uncomment for Heroku
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Internationalization
@@ -103,6 +103,6 @@ USE_TZ = True
 TEMPLATE_DIRS = [(os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), 'notestemplates'))]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  #comment for Heroku
+#STATIC_ROOT = 'staticfiles'        #uncomment for Heroku
 STATIC_URL = '/static/'
