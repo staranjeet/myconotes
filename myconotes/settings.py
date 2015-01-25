@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 ADMINS = (
@@ -27,7 +28,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -83,7 +84,9 @@ DATABASES = {
         'PASSWORD':'gameover',
     }
 }
+DATABASES['default'] = dj_database_url.config()
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -100,5 +103,5 @@ USE_TZ = True
 TEMPLATE_DIRS = [(os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), 'notestemplates'))]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
